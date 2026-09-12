@@ -1,6 +1,6 @@
 # Godot C++ Quickstart (GDExtension Template)
 
-从 [wallpaper-studio](../wallpaper-studio-main) 提炼出的 **Godot 4 + C++ GDExtension (godot-cpp)** 最小可运行快速启动模板。
+**Godot 4 + C++ GDExtension (godot-cpp)** 最小可运行快速启动模板。
 
 开箱即用：一个 C++ 节点类（属性 / 方法 / 静态方法 / 信号）+ 一个展示 C++ ↔ GDScript 交互的场景 + 一套跨平台构建脚本。
 
