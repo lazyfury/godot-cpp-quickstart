@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/data_binding/demo/data_binding_demo.gd" id="1_demo"]
+
+[node name="DataBindingDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_demo")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.08, 0.1, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+custom_minimum_size = Vector2(440, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Model ⇄ Binding ⇄ Control"
+horizontal_alignment = 1
+
+[node name="NameRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Center/Panel/Margin/VBox/NameRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "name"
+
+[node name="LineEdit" type="LineEdit" parent="Center/Panel/Margin/VBox/NameRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AgeRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Center/Panel/Margin/VBox/AgeRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "age"
+
+[node name="SpinBox" type="SpinBox" parent="Center/Panel/Margin/VBox/AgeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 200.0
+
+[node name="EnabledRow" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Center/Panel/Margin/VBox/EnabledRow"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "enabled"
+
+[node name="CheckBox" type="CheckBox" parent="Center/Panel/Margin/VBox/EnabledRow"]
+layout_mode = 2
+
+[node name="Dump" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "model:"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "type in a control to update the Model, or press a button to update the Model"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="SetName" type="Button" parent="Center/Panel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "model: name=Bob"
+
+[node name="AgePlus" type="Button" parent="Center/Panel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "model: age+1"
+
+[node name="ToggleEnabled" type="Button" parent="Center/Panel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "model: toggle"
+
+[connection signal="pressed" from="Center/Panel/Margin/VBox/Buttons/SetName" to="." method="_on_set_name_pressed"]
+[connection signal="pressed" from="Center/Panel/Margin/VBox/Buttons/AgePlus" to="." method="_on_age_plus_pressed"]
+[connection signal="pressed" from="Center/Panel/Margin/VBox/Buttons/ToggleEnabled" to="." method="_on_toggle_enabled_pressed"]

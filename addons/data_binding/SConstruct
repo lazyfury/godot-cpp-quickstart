@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+"""
+Standalone build for the data_binding addon.
+
+    cd addons/data_binding
+    scons                                   # debug
+    scons target=template_release
+    scons godot_cpp=/path/to/godot-cpp
+
+The project root's SConstruct builds every `addons/*/SConscript` as well, so
+`scons` at the root builds this addon together with the main extension. The
+actual build rules live in ./SConscript and are shared by both entry points.
+"""
+
+import os
+
+# Share the project's signature database with the root build so switching
+# between `scons` at the root and `scons` here does not force a full rebuild.
+SConsignFile(os.path.join("..", "..", ".sconsign.dblite"))
+
+
+def resolve_godot_cpp():
+    path = ARGUMENTS.get("godot_cpp") or os.environ.get("GODOT_CPP_PATH") or "../../godot-cpp"
+    if not os.path.isfile(os.path.join(path, "SConstruct")):
+        raise SCons.Errors.UserError(
+            "Could not find godot-cpp at '{}'. Pass `godot_cpp=/path/to/godot-cpp`.".format(path)
+        )
+    return path
+
+
+env = SConscript(os.path.join(resolve_godot_cpp(), "SConstruct"))
+
+library = SConscript("SConscript", exports={"env": env})
+Default(library)

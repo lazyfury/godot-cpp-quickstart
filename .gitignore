@@ -1,0 +1,28 @@
+# Build artifacts
+bin/*.framework/
+bin/*.dylib
+bin/*.so
+bin/*.dll
+bin/*.a
+bin/*.wasm
+src/gen/
+*.os
+.sconsign.dblite
+
+# Addon sub-projects build artifacts
+addons/**/bin/*.framework/
+addons/**/bin/*.dylib
+addons/**/bin/*.so
+addons/**/bin/*.dll
+addons/**/bin/*.a
+addons/**/bin/*.wasm
+
+# Godot
+.godot/
+
+# Editors / OS
+.DS_Store
+compile_commands.json
+.cache/
+
+build/**

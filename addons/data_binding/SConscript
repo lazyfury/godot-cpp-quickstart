@@ -1,0 +1,42 @@
+"""Shared build recipe for the data_binding addon.
+
+Invoked from two places:
+  * addons/data_binding/SConstruct      (standalone: `cd` here and run scons)
+  * the project root SConstruct         (build everything together)
+
+Both pass a configured godot-cpp `env`; this file only adds the addon's own
+include path and defines its shared library.
+"""
+
+Import("env")
+
+PROJECT_NAME = "data_binding"
+SOURCES_DIR = "src"
+OUTPUT_DIR = "bin"
+
+local_env = env.Clone()
+local_env.Append(CPPPATH=[Dir(SOURCES_DIR).srcnode().abspath])
+sources = Glob(SOURCES_DIR + "/*.cpp")
+
+platform = local_env["platform"]
+target = local_env["target"]
+
+if platform == "macos":
+    library = local_env.SharedLibrary(
+        "{output}/lib{name}.{platform}.{target}.framework/lib{name}.{platform}.{target}".format(
+            output=OUTPUT_DIR, name=PROJECT_NAME, platform=platform, target=target
+        ),
+        source=sources,
+    )
+else:
+    library = local_env.SharedLibrary(
+        "{output}/lib{name}{suffix}{shlibsuffix}".format(
+            output=OUTPUT_DIR,
+            name=PROJECT_NAME,
+            suffix=local_env["suffix"],
+            shlibsuffix=local_env["SHLIBSUFFIX"],
+        ),
+        source=sources,
+    )
+
+Return("library")

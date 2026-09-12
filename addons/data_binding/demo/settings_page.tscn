@@ -1,0 +1,322 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/data_binding/demo/settings_page.gd" id="1_settings"]
+
+[node name="SettingsPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_settings")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.07, 0.09, 1)
+
+[node name="Layout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Layout/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "SETTINGS"
+
+[node name="Body" type="HBoxContainer" parent="Layout/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Tabs" type="TabContainer" parent="Layout/VBox/Body"]
+custom_minimum_size = Vector2(520, 360)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Audio" type="VBoxContainer" parent="Layout/VBox/Body/Tabs"]
+layout_mode = 2
+
+[node name="AudioGrid" type="GridContainer" parent="Layout/VBox/Body/Tabs/Audio"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="MasterLabel" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MasterRow" type="HBoxContainer" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MasterSlider" type="HSlider" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/MasterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="MasterValue" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/MasterRow"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicRow" type="HBoxContainer" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="MusicSlider" type="HSlider" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/MusicRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 60.0
+
+[node name="MusicValue" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/MusicRow"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "60%"
+horizontal_alignment = 2
+
+[node name="SfxLabel" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SfxRow" type="HBoxContainer" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SfxSlider" type="HSlider" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/SfxRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+step = 1.0
+value = 90.0
+
+[node name="SfxValue" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid/SfxRow"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "90%"
+horizontal_alignment = 2
+
+[node name="MuteLabel" type="Label" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+text = "Mute All"
+
+[node name="MuteCheck" type="CheckButton" parent="Layout/VBox/Body/Tabs/Audio/AudioGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Display" type="VBoxContainer" parent="Layout/VBox/Body/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="DisplayGrid" type="GridContainer" parent="Layout/VBox/Body/Tabs/Display"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="ResolutionLabel" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ResolutionOption" type="OptionButton" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="FullscreenLabel" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheck" type="CheckButton" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VSyncLabel" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+text = "V-Sync"
+
+[node name="VSyncCheck" type="CheckButton" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="FpsLabel" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+text = "Max FPS"
+
+[node name="FpsSpin" type="SpinBox" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+min_value = 30.0
+max_value = 360.0
+step = 1.0
+value = 144.0
+
+[node name="UiScaleLabel" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+text = "UI Scale"
+
+[node name="UiScaleRow" type="HBoxContainer" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="UiScaleSlider" type="HSlider" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid/UiScaleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.75
+max_value = 1.5
+step = 0.05
+value = 1.0
+
+[node name="UiScaleValue" type="Label" parent="Layout/VBox/Body/Tabs/Display/DisplayGrid/UiScaleRow"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "1.00x"
+horizontal_alignment = 2
+
+[node name="Gameplay" type="VBoxContainer" parent="Layout/VBox/Body/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="GameplayGrid" type="GridContainer" parent="Layout/VBox/Body/Tabs/Gameplay"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="DifficultyLabel" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+text = "Difficulty"
+
+[node name="DifficultyOption" type="OptionButton" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="LanguageLabel" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+text = "Language"
+
+[node name="LanguageOption" type="OptionButton" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="SensLabel" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="SensRow" type="HBoxContainer" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="SensSlider" type="HSlider" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid/SensRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 1.5
+
+[node name="SensValue" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid/SensRow"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "1.5"
+horizontal_alignment = 2
+
+[node name="InvertYLabel" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+text = "Invert Y Axis"
+
+[node name="InvertYCheck" type="CheckButton" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NameLabel" type="Label" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+layout_mode = 2
+text = "Player Name"
+
+[node name="NameEdit" type="LineEdit" parent="Layout/VBox/Body/Tabs/Gameplay/GameplayGrid"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ModelPanel" type="PanelContainer" parent="Layout/VBox/Body"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="ModelMargin" type="MarginContainer" parent="Layout/VBox/Body/ModelPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="ModelVBox" type="VBoxContainer" parent="Layout/VBox/Body/ModelPanel/ModelMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ModelTitle" type="Label" parent="Layout/VBox/Body/ModelPanel/ModelMargin/ModelVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "LIVE MODEL"
+
+[node name="ModelDump" type="Label" parent="Layout/VBox/Body/ModelPanel/ModelMargin/ModelVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "..."
+vertical_alignment = 0
+
+[node name="Footer" type="HBoxContainer" parent="Layout/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Status" type="Label" parent="Layout/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ready."
+
+[node name="ResetButton" type="Button" parent="Layout/VBox/Footer"]
+layout_mode = 2
+text = "Reset Defaults"
+
+[node name="ApplyButton" type="Button" parent="Layout/VBox/Footer"]
+layout_mode = 2
+text = "Apply"
+
+[connection signal="pressed" from="Layout/VBox/Footer/ResetButton" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Layout/VBox/Footer/ApplyButton" to="." method="_on_apply_pressed"]
