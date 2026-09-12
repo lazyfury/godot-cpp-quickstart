@@ -26,3 +26,6 @@ compile_commands.json
 .cache/
 
 build/**
+
+# Local godot-cpp checkout (symlink, not a submodule for now)
+/godot-cpp
